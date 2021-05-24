@@ -64,7 +64,7 @@
         </style>
     </head>
     <body>
-      <div class="links flex-center">
+      <div class="links flex-center full-height">
         <a href="{{route('comics.index')}}">Comics</a>
         <a href="{{route('comics.create')}}">Create</a>
       </div>

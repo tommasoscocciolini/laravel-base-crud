@@ -65,16 +65,16 @@
     </head>
     <body>
       <div class="links flex-center full-height">
-        <form class="" action="{{route('comics.store')}}" method="post">
+        <form class="" action="{{route('comics.update', ['comic'=> $comic->id])}}" method="post">
           @csrf
-          @method('POST')
-          <input type="text" name="title" value="" placeholder="titolo">
-          <input type="text" name="description" value="" placeholder="desc">
-          <input type="text" name="thumb" value="" placeholder="src">
-          <input type="float" name="price" value="" placeholder="price">
-          <input type="number" name="series" value="" placeholder="series">
-          <input type="date" name="sale_date" value="">
-          <input type="text" name="type" value="">
+          @method('patch')
+          <input type="text" name="title" value="{{$comic->title}}" placeholder="titolo">
+          <input type="text" name="description" value="{{$comic->description}}" placeholder="desc">
+          <input type="text" name="thumb" value="{{$comic->thumb}}" placeholder="src">
+          <input type="float" name="price" value="{{$comic->price}}" placeholder="price">
+          <input type="number" name="series" value="{{$comic->series}}" placeholder="series">
+          <input type="date" name="sale_date" value="{{$comic->sale_date}}">
+          <input type="text" name="type" value="{{$comic->type}}">
           <input type="submit" name="" value="invia">
         </form>
         <a href="{{route('comics.index')}}">Back</a>

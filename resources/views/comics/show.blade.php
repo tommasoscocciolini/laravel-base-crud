@@ -76,6 +76,7 @@
         <img src="{{$comic->thumb}}" alt="" height="500">
         <h4><b>{{$comic->title}}</b> <i><small>Price: {{$comic->price}}</small></i></h4>
         <p>{{$comic->description}}</p>
+        <a class="card" href="{{route('comics.edit', ['comic'=> $comic->id])}}">Edit</a>
         <a href="{{route('comics.index')}}">Back</a>
       </div>
     </body>

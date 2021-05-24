@@ -75,11 +75,12 @@
 
 
       @foreach($comics as $comic)
-      <div>
+      <div class="m-b-md">
         <a class="card flex-center" href="{{route('comics.show', ['comic' => $comic->id])}}">
         <img src="{{$comic->thumb}}" alt="" height="150">
         <h4><b>{{$comic->title}}</b> <i><small>Price: {{$comic->price}}</small></i></h4>
         </a>
+        <a class="card" href="{{route('comics.edit', ['comic'=> $comic->id])}}">Edit</a>
       </div>
       @endforeach
 
