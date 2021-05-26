@@ -64,6 +64,15 @@
         </style>
     </head>
     <body>
+      @if ($errors->any())
+      <div class="alert alert-danger">
+        <ul>
+          @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+          @endforeach
+        </ul>
+      </div>
+      @endif
       <div class="links flex-center full-height">
         <form class="" action="{{route('comics.update', ['comic'=> $comic->id])}}" method="post">
           @csrf
@@ -71,8 +80,8 @@
           <input type="text" name="title" value="{{$comic->title}}" placeholder="titolo">
           <input type="text" name="description" value="{{$comic->description}}" placeholder="desc">
           <input type="text" name="thumb" value="{{$comic->thumb}}" placeholder="src">
-          <input type="float" name="price" value="{{$comic->price}}" placeholder="price">
-          <input type="number" name="series" value="{{$comic->series}}" placeholder="series">
+          <input type="number" name="price" step="0.1" value="{{$comic->price}}" placeholder="price">
+          <input type="number" name="series" min="1" value="{{$comic->series}}" placeholder="series">
           <input type="date" name="sale_date" value="{{$comic->sale_date}}">
           <input type="text" name="type" value="{{$comic->type}}">
           <input type="submit" name="" value="invia">

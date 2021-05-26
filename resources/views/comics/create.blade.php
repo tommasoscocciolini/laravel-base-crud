@@ -64,6 +64,15 @@
         </style>
     </head>
     <body>
+      @if ($errors->any())
+      <div class="alert alert-danger">
+        <ul>
+          @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+          @endforeach
+        </ul>
+      </div>
+      @endif
       <div class="links flex-center full-height">
         <form class="" action="{{route('comics.store')}}" method="post">
           @csrf
@@ -71,8 +80,8 @@
           <input type="text" name="title" value="" placeholder="titolo">
           <input type="text" name="description" value="" placeholder="desc">
           <input type="text" name="thumb" value="" placeholder="src">
-          <input type="float" name="price" value="" placeholder="price">
-          <input type="number" name="series" value="" placeholder="series">
+          <input type="float" name="price" step="0.1" value="" placeholder="price">
+          <input type="number" name="series" min="1" value="" placeholder="series">
           <input type="date" name="sale_date" value="">
           <input type="text" name="type" value="">
           <input type="submit" name="" value="invia">

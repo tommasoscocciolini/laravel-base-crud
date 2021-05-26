@@ -81,6 +81,7 @@
         <h4><b>{{$comic->title}}</b> <i><small>Price: {{$comic->price}}</small></i></h4>
         </a>
         <a class="card" href="{{route('comics.edit', ['comic'=> $comic->id])}}">Edit</a>
+        <a class="card" href="{{route('comics.destroy', ['comic'=> $comic->id])}}">Delete</a>
       </div>
       @endforeach
 
@@ -88,4 +89,7 @@
       <a class="card flex-center" href="{{route('comics.create')}}">Create</a>
       <a class="card flex-center" href="{{route('comics.index')}}">Comics</a>
     </body>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <script src="/js/app.js" charset="utf-8"></script>
 </html>

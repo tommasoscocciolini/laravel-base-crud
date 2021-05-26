@@ -37,6 +37,17 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
+      $request->validate([
+        'title' => 'bail|required|unique:comics|max:100|string',
+        'description' => 'required|max:1000|string',
+        'thumb' => 'required|max:255|string',
+        'price' => 'required|numeric',
+        'series' => 'nullable|string',
+        'sale_date' => 'required|date',
+        'type' => 'nullable|string',
+      ]);
+
+
         $comic = $request->all();
 
         $newcomic = new Comic();
@@ -85,6 +96,16 @@ class ComicController extends Controller
      */
     public function update(Request $request, Comic $comic)
     {
+        $request->validate([
+          'title' => 'bail|required|unique:comics|max:100|string',
+          'description' => 'required|max:1000|string',
+          'thumb' => 'required|max:255|string',
+          'price' => 'required|numeric',
+          'series' => 'nullable|string',
+          'sale_date' => 'required|date',
+          'type' => 'nullable|string',
+        ]);
+
         $data = $request->all();
         $comic->update($data);
         return redirect()->route('comics.show', $comic);
@@ -96,8 +117,15 @@ class ComicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+    // public function destroy(Comic $comic)
+    // {
+    //   $comic->delete();
+    //
+    //   return redirect()->route('comics.index');
+    // }
+    public function destroy(Comic $comic) {
+      $comic->delete();
+      echo "Record deleted successfully.<br/>";
+      echo '<a href = "/delete-records">Click Here</a> to go back.';
     }
 }
